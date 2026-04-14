@@ -1,0 +1,10 @@
+# Secrets
+.env
+
+# Data
+*_data/
+*.sql
+
+# IDE
+.vscode/
+.idea/
