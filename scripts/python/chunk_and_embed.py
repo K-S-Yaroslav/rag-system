@@ -12,7 +12,7 @@ from typing import List, Dict, Any
 from pathlib import Path
 
 #LangChain imports
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import (
     PyPDFLoader,
     Docx2txtLoader,
@@ -41,9 +41,9 @@ def get_loader(file_path: str):
     elif ext in ['.doc', '.docx']:
         return Docx2txtLoader(file_path)
     elif ext == '.txt':
-        return TextLoader(file_path)
-    elif ext == ['.xlsx', 'xls']:
-        return UnstructuredExcelLoader(file_path, mode = 'elements')
+        return TextLoader(file_path, encoding='utf-8')
+    elif ext == ['.xlsx', '.xls']:
+        return UnstructuredExcelLoader(file_path, mode='elements')
     else:
         raise ValueError(f"Unsupported file type: {ext}")
 
@@ -86,9 +86,9 @@ def init_qdrant_collection(client: QdrantClient):
 
 
 def main():
-    if len(sys.argv) < 2 # проверка передачи пути к файлу
-    print("Usage: python chunk_and_embed.py <file_path>")
-    sys.exit(1)
+    if len(sys.argv) < 2: # проверка передачи пути к файлу
+        print("Usage: python chunk_and_embed.py <file_path>")
+        sys.exit(1)
 
     file_path = sys.argv[1]
 

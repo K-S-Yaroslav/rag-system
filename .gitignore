@@ -9,3 +9,4 @@
 .vscode/
 .idea/scripts/python/venv/
 *.code-workspace
+venv/

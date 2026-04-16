@@ -1,0 +1,23 @@
+# Core LangChain для обработки документов и RAG
+langchain-text-splitters>=0.3.0
+langchain-community>=0.3.0
+langchain-qdrant>=0.1.0
+
+# Qdrant клиент для операций с векторной базой данных
+qdrant-client>=1.15.1
+
+# Document loaders
+pypdf>=4.0.0           # PDF parsing
+pdfplumber>=0.11.0     # Улучшенное извлечение таблиц из PDF-файлов (резервный вариант)
+python-docx>=1.1.0     # .docx files
+openpyxl>=3.1.0        # .xlsx files
+pandas>=2.0.0          # Манипулирование данными для Excel
+
+# Embeddings (альтернатива to Ollama)
+sentence-transformers>=2.7.0
+
+# Optional: для эффективной сегментации текста
+tiktoken>=0.7.0        # Token counting for OpenAI models
+
+# Для загрузки Excel через UnstructuredExcelLoader
+unstructured>=0.15.0
