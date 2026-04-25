@@ -52,7 +52,7 @@ class EmbeddingProvider:
         # Создаём экземпляр OllamaEmbeddings из LangChain
         self._embeddings = OllamaEmbeddings(
             model=model,
-            base_url=base_url,
+            #base_url=base_url,
             #timeout=timeout,
         )
     

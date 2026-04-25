@@ -11,7 +11,7 @@ from typing import List, Optional, Dict, Any
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
 from langchain_core.documents import Document
-from langchain_qdrant import QdrantVectorStore
+from langchain_qdrant import Qdrant
 
 from .embeddings import EmbeddingProvider
 
@@ -100,10 +100,10 @@ class QdrantStore:
             return 0
         
         # Создаём векторное хранилище LangChain
-        vector_store = QdrantVectorStore(
+        vector_store = Qdrant(
             client=self._client,
             collection_name=self.collection_name,
-            embedding=embedding_provider._embeddings
+            embeddings=embedding_provider._embeddings
         )
         
         # Добавляем документы
@@ -134,10 +134,10 @@ class QdrantStore:
             return []
         
         # Создаём векторное хранилище
-        vector_store = QdrantVectorStore(
+        vector_store = Qdrant(
             client=self._client,
             collection_name=self.collection_name,
-            embedding=embedding_provider._embeddings
+            embeddings=embedding_provider._embeddings
         )
         
         # Выполняем поиск
@@ -177,10 +177,10 @@ class QdrantStore:
         Возвращает:
             Отфильтрованный список документов
         """
-        vector_store = QdrantVectorStore(
+        vector_store = Qdrant(
             client=self._client,
             collection_name=self.collection_name,
-            embedding=embedding_provider._embeddings
+            embeddings=embedding_provider._embeddings
         )
         
         # Формируем фильтр для Qdrant
