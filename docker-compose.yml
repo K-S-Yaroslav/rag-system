@@ -54,6 +54,9 @@ services:
     image: n8nio/n8n:latest
     container_name: rag_orchestrator
     restart: unless-stopped
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
     ports:
       - "5678:5678"
     environment:
